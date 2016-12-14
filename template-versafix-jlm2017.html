@@ -42,13 +42,6 @@
       gutterVisible { label: Show Gutter; extend: visible }
       socialIconType { label: Icon Version;widget: select; options:bw=Black and White|colors=Colors; }
 
-      preheaderLinkOption {
-        label: Unsubscribe Link;
-        widget: select;
-        options: [profile_link]=Profile|[unsubscribe_link]=Unsubscribe|none=None;
-        help: If -None- is selected, preHeader text will be shown;
-      }
-
       hrStyle { label: Separator Style;properties:color hrWidth hrHeight; }
       hrStyle:preview { height: 200%; width: 200%; bottom: 20px; -ko-border-bottom: @[hrHeight]px solid @color; }
       preheaderVisible { label: Show Preheader; extend: visible; help: Preheader block is the first one on the top of the page. It contains web version link and optionally unsubscribe link or a preheader text that will be shown as a preview on some email clients; }
@@ -95,7 +88,6 @@
       rightLongText { label: Right Text; extend: text }
       rightButtonLink { label: Right Button; extend: buttonLink }
       webversionText{ label: Web Link Text; extend: text;}
-      unsubscribeText{ label: Unsubscribe Link; extend: text;}
 
       titleVisible { label: Show Title; extend: visible; }
       buttonVisible { label: Show Button; extend: visible; }
@@ -430,12 +422,6 @@
                         <td width="100%" valign="top" align="left" style="font-weight: normal; text-align:left; font-size: 13px;
                           font-family: Arial, Helvetica, sans-serif; color: #ffffff;
                           -ko-font-size: @[linkStyle.size]px; -ko-color: @linkStyle.color; -ko-font-family: @linkStyle.face">
-                          <a data-ko-display="preheaderLinkOption neq 'none'" data-ko-editable="unsubscribeText" href="http://www.jlm2017.fr/unsubscribe"
-                             style="text-decoration: underline; color: #ffffff; -ko-attr-href: @preheaderLinkOption;
-                             -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">Se désinscrire</a>
-                          <span data-ko-display="preheaderLinkOption eq 'none'" style="font-size: 13px;color: #919191; font-weight: normal; text-align:center;
-                            font-family: Arial, Helvetica, sans-serif; -ko-font-size: @[longTextStyle.size]px; -ko-color: @longTextStyle.color;
-                            -ko-font-family: @longTextStyle.face; -ko-bind-text: @preheaderText; display: none"></span>
                         </td>
                       </tr>
                     </table>
