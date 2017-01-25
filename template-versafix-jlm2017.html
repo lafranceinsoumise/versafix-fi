@@ -17,6 +17,11 @@
         max: 20;
         help: Attention - this property is not supported on all email clients (i.e. Outlook)
       }
+      nbElements { label: Number of Elements;
+                    widget: integer;
+                    max: 3;
+                    min: 1;
+      }
       face { label: Font; widget: select; options: Arial, Helvetica, sans-serif=Arial|Arial Black, Arial Black, Gadget, sans-serif=Arial Black|Comic Sans MS, Comic Sans MS5, cursive=Comic Sans|Courier New, Courier New, monospace=Courier|Georgia, serif=Georgia|Impact, sans-serif=Impact|Lucida Console, Monaco, monospace=Lucida Console|Lucida Sans Unicode, Lucida Grande, sans-serif=Lucida Sans Unicode|Times New Roman, Times, serif=Times New Roman|Verdana, Geneva, sans-serif=Verdana}
       decoration { label: Decoration; widget: select; options: none=None|underline=Underline }
       linksColor { label: Link Color; extend: color }
@@ -167,6 +172,7 @@
       tripleImageBlock { label: Three Image Gallery Block;properties:gutterVisible=false;variant:gutterVisible; theme: contentTheme}
 
       buttonBlock { label: Button Block; theme: contentTheme}
+      buttonLineBlock  { label: Button Line Block; properties: nbElements=1; theme: contentTheme}
       hrBlock { label: Separator Block;  theme: contentTheme}
       spacerBlock { label: Spacer Block;  theme: contentTheme}
 
@@ -184,6 +190,7 @@
       footerBlock:preview,
       socialBlock:preview,
       buttonBlock:preview,
+      buttonLineBlock:preview,
       titleBlock:preview,
       socialshareBlock:preview { -ko-background-color: @[backgroundColor] }
     }
@@ -1097,6 +1104,82 @@
     </tr>
   </table>
   <!-- /buttonBlock -->
+  <!-- buttonLineBlock -->
+  <table class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf"
+    style="background-color: #bfbfbf; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor"  data-ko-block="buttonLineBlock">
+    <tr>
+      <td class="vb-outer" align="center" valign="top" bgcolor="#bfbfbf"
+        style="background-color: #bfbfbf; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor">
+
+<!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]-->
+        <div class="oldwebkit">
+        <table width="570" border="0" cellpadding="0" cellspacing="18" class="vb-container fullpad" bgcolor="#ffffff"
+          style="width: 100%; max-width: 570px; background-color: #ffffff; -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor;">
+          <tr>
+            <td valign="top" bgcolor="#ffffff" style="background-color: #ffffff;
+              -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor" align="center">
+
+              <table cellpadding="0" data-ko-display="nbElements >=1" border="0" align="center" cellspacing="0" class="mobile-full">
+                <tr>
+                  <td width="auto" valign="middle" bgcolor="#0098b6" align="center" height="50"
+                    style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
+                    padding-left: 14px; padding-right: 14px; background-color: #0098b6; border-radius: 4px;
+                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
+                     -ko-border-radius: @[bigButtonStyle.radius]px;
+                    -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
+                    <a data-ko-link="leftButtonLink.url" data-ko-editable="leftButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
+                      -ko-color: @bigButtonStyle.color;">BUTTON</a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+
+            <td valign="top" bgcolor="#ffffff" style="background-color: #ffffff;
+              -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor" align="center">
+
+              <table cellpadding="0" data-ko-display="nbElements >=2" border="0" align="center" cellspacing="0" class="mobile-full">
+                <tr>
+                  <td width="auto" valign="middle" bgcolor="#0098b6" align="center" height="50"
+                    style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
+                    padding-left: 14px; padding-right: 14px; background-color: #0098b6; border-radius: 4px;
+                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
+                     -ko-border-radius: @[bigButtonStyle.radius]px;
+                    -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
+                    <a data-ko-link="middleButtonLink.url" data-ko-editable="middleButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
+                      -ko-color: @bigButtonStyle.color;">BUTTON</a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+
+            <td valign="top" bgcolor="#ffffff" style="background-color: #ffffff;
+              -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor" align="center">
+
+              <table cellpadding="0" data-ko-display="nbElements >=3" border="0" align="center" cellspacing="0" class="mobile-full">
+                <tr>
+                  <td width="auto" valign="middle" bgcolor="#0098b6" align="center" height="50"
+                    style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
+                    padding-left: 14px; padding-right: 14px; background-color: #0098b6; border-radius: 4px;
+                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
+                     -ko-border-radius: @[bigButtonStyle.radius]px;
+                    -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
+                    <a data-ko-link="rightButtonLink.url" data-ko-editable="rightButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
+                      -ko-color: @bigButtonStyle.color;">BUTTON</a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+        </div>
+<!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+  </table>
+  <!-- /buttonLineBlock -->
 
   <!-- imageBlock  -->
   <table class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf" style="background-color: #bfbfbf;
