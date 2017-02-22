@@ -27,6 +27,8 @@
       linksColor { label: Link Color; extend: color }
       linksDecoration { label: Underlined Links?; extend: decoration }
       buttonColor { label: Button Color; extend: color }
+      buttonColor2 { label: Button Color; extend: color }
+      buttonColor3 { label: Button Color; extend: color }
       text { label: Paragraph; widget: text }
       url { label: Link; widget: url }
       src { label: Image; widget: src }
@@ -78,7 +80,7 @@
       /* buttons */
       buttonStyle color { label: Text Color; extend: color }
       buttonStyle size { label: Text Size; extend: size }
-      buttonStyle { label: Button; properties: face color size buttonColor radius }
+      buttonStyle { label: Button; properties: face color size buttonColor buttonColor2 buttonColor3 radius }
       buttonStyle:preview { -ko-bind-text: @['Button']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; -ko-background-color: @buttonColor; padding-left: 5px; -ko-border-radius: @[radius]px; }
 
       /* contents */
@@ -1143,7 +1145,7 @@
                   <td width="auto" valign="middle" bgcolor="#0098b6" align="center" height="50"
                     style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
                     padding-left: 14px; padding-right: 14px; background-color: #0098b6; border-radius: 4px;
-                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
+                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor2; -ko-background-color: @bigButtonStyle.buttonColor2;
                      -ko-border-radius: @[bigButtonStyle.radius]px;
                     -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
                     <a data-ko-link="middleButtonLink.url" data-ko-editable="middleButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
@@ -1162,7 +1164,7 @@
                   <td width="auto" valign="middle" bgcolor="#0098b6" align="center" height="50"
                     style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
                     padding-left: 14px; padding-right: 14px; background-color: #0098b6; border-radius: 4px;
-                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
+                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor3; -ko-background-color: @bigButtonStyle.buttonColor3;
                      -ko-border-radius: @[bigButtonStyle.radius]px;
                     -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
                     <a data-ko-link="rightButtonLink.url" data-ko-editable="rightButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
