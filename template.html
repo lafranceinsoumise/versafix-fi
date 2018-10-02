@@ -26,7 +26,9 @@
       decoration { label: Decoration; widget: select; options: none=None|underline=Underline }
       linksColor { label: Link Color; extend: color }
       linksDecoration { label: Underlined Links?; extend: decoration }
-      buttonColor { label: Button Color; extend: color }
+      buttonColor { label: Button Color Left; extend: color }
+      buttonColor2 { label: Button Color Middle; extend: color }
+      buttonColor3 { label: Button Color Right; extend: color }
       text { label: Paragraph; widget: text }
       url { label: Link; widget: url }
       src { label: Image; widget: src }
@@ -76,9 +78,11 @@
       bigTitleStyle { label: Title; properties: face color size align}
       bigTitleStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
       /* buttons */
-      buttonStyle color { label: Text Color; extend: color }
+      buttonStyle color { label: Text Color Left; extend: color }
+      buttonStyle color2 { label: Text Color Middle; extend: color }
+      buttonStyle color3 { label: Text Color Right; extend: color }
       buttonStyle size { label: Text Size; extend: size }
-      buttonStyle { label: Button; properties: face color size buttonColor radius }
+      buttonStyle { label: Button; properties: face color color2 color3 size buttonColor buttonColor2 buttonColor3 radius }
       buttonStyle:preview { -ko-bind-text: @['Button']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; -ko-background-color: @buttonColor; padding-left: 5px; -ko-border-radius: @[radius]px; }
 
       /* contents */
@@ -465,12 +469,29 @@
   </div>
   <!-- /preheaderBlock -->
 
-  <div class="header center" style="-moz-hyphens: none; -webkit-hyphens: none; background-color: #c9462c; border: 0px; border-collapse: collapse !important; color: #222222; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-weight: normal; hyphens: none; line-height: 19px; margin: 0; padding: 10px 0px 10px; text-align: center; vertical-align: top; word-break: break-word;">
-    <center>
-      <img src="img/logo.png" data-filename="logo-blanc.png" height="100" style="-ms-interpolation-mode: bicubic; clear: both; display: block; float: none; height: 50px; margin-top: 15px; max-height: 50px; max-width: 100%; outline: none; text-decoration: none; width: auto;">
-    </center>
-  </div>
+  <table class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf" style="background-color: #bfbfbf;">
+    <tr>
+      <td class="vb-outer" valign="top" align="center">
 
+<!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]-->
+        <div class="oldwebkit">
+        <table width="570" class="vb-container fullwidth" cellpadding="0" border="0" bgcolor="#ffffff" align="center"
+          cellspacing="0" style="width: 100%; max-width: 570px; background-color: #ffffff;">
+          <tr>
+            <td valign="top" align="center" style="padding-top: 20px;">
+              <img 
+                  hspace="0" border="0" vspace="0" width="570"
+                  src="img/logo-FI.png" class="mobile-full"
+                  alt="Logo FI" style="max-width: 570px; display: block; border-radius: 0px; width: 100%; height: auto; font-size: 13px;
+                  font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;" /></a>
+            </td>
+          </tr>
+        </table>
+        </div>
+<!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+  </table>
 
   <div data-ko-container="main" data-ko-wrap="false">
 
@@ -1143,11 +1164,11 @@
                   <td width="auto" valign="middle" bgcolor="#0098b6" align="center" height="50"
                     style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
                     padding-left: 14px; padding-right: 14px; background-color: #0098b6; border-radius: 4px;
-                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
+                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor2; -ko-background-color: @bigButtonStyle.buttonColor2;
                      -ko-border-radius: @[bigButtonStyle.radius]px;
-                    -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
+                    -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color2; ">
                     <a data-ko-link="middleButtonLink.url" data-ko-editable="middleButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @bigButtonStyle.color;">BUTTON</a>
+                      -ko-color: @bigButtonStyle.color2;">BUTTON</a>
                   </td>
                 </tr>
               </table>
@@ -1162,11 +1183,11 @@
                   <td width="auto" valign="middle" bgcolor="#0098b6" align="center" height="50"
                     style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
                     padding-left: 14px; padding-right: 14px; background-color: #0098b6; border-radius: 4px;
-                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
+                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor3; -ko-background-color: @bigButtonStyle.buttonColor3;
                      -ko-border-radius: @[bigButtonStyle.radius]px;
-                    -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
+                    -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color3; ">
                     <a data-ko-link="rightButtonLink.url" data-ko-editable="rightButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @bigButtonStyle.color;">BUTTON</a>
+                      -ko-color: @bigButtonStyle.color3;">BUTTON</a>
                   </td>
                 </tr>
               </table>
@@ -1578,11 +1599,11 @@
 <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]-->
         <div class="oldwebkit">
         <table width="570" style="width: 100%; max-width: 570px" border="0" cellpadding="0" cellspacing="9" class="vb-container halfpad" align="center">
-          
+
           <tr>
             <td data-ko-editable="longText" class="long-text links-color"
                 style="text-align:center; font-size: 13px;color: #919191; font-weight: normal; text-align:center; font-family: Arial, Helvetica, sans-serif;
-                -ko-font-size: @[longTextStyle.size]px; -ko-color: @longTextStyle.color; -ko-font-family: @longTextStyle.face"><p>Cet email a été envoyé à [EMAIL]. Pour choisir les emails que vous recevez, <a href="http://www.jlm2017.fr/agir">cliquez ici</a>. Pour arrêter complètement de recevoir des emails, <a href="http://www.jlm2017.fr/unsubscribe">cliquez ici</a>.</p></td>
+                -ko-font-size: @[longTextStyle.size]px; -ko-color: @longTextStyle.color; -ko-font-family: @longTextStyle.face"><p>Cet email a été envoyé à [EMAIL]. Pour choisir les emails que vous recevez, <a href="http://agir.lafranceinsoumise.fr/message_preferences/?[MERGE_LOGIN_QUERY]">cliquez ici</a>. Pour arrêter complètement de recevoir des emails, <a href="https://agir.lafranceinsoumise.fr/desinscription?[MERGE_LOGIN_QUERY]">cliquez ici</a>.</p></td>
           </tr>
         </table>
         </div>
