@@ -52,9 +52,12 @@
         widget: text;
       }
 
+      hrStyle color { label: Line color; extend: color }
       hrStyle { label: Separator Style;properties:color hrWidth hrHeight; }
       hrStyle:preview { height: 200%; width: 200%; bottom: 20px; -ko-border-bottom: @[hrHeight]px solid @color; }
-      preheaderVisible { label: Show Preheader; extend: visible; help: Preheader block is the first one on the top of the page. It contains web version link and optionally unsubscribe link or a preheader text that will be shown as a preview on some email clients; }
+
+      preheaderVisible { label: Afficher le header; extend: visible; help: Preheader block is the first one on the top of the page. It contains web version link and optionally unsubscribe link or a preheader text that will be shown as a preview on some email clients; }
+      footerVisible { label: Afficher le footer; extend: visible; help: Le footer est le dernier bloc de la page. Il contient les liens pour vérifier ses paramètres?; }
 
       /* content types */
       blocks { label: Blocks; properties: blocks[]; }
@@ -110,10 +113,11 @@
       frameTheme:preview { -ko-background-color: @[backgroundColor] }
       template preheaderText { label: Preheader; }
 
-      template { label: Page; theme: frameTheme ;properties:  preheaderVisible=true; version: 1.0.5; }
+      template { label: Page; theme: frameTheme ;properties:  preheaderVisible=true footerVisible=true; version: 1.0.5; }
 
+      footerBlock preferencesVisible { label: Afficher les préférences de mail dans le footer; extend: visible; help: Activer ou désactiver le lien de préférences dans le footer; }
       footerBlock unsubscribeLinkStyle { label: Unsubscribe;  }
-      footerBlock { label: Unsubscribe Block; theme: frameTheme }
+      footerBlock { label: Unsubscribe Block; properties:  preferencesVisible=true; theme: frameTheme; }
 
       socialBlock fbVisible { label: Facebook; }
       socialBlock twVisible { label: Twitter }
@@ -154,6 +158,8 @@
 
       tripleArticleBlock { label: 3 Columns Block; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true titleTextStyle longTextStyle buttonStyle  leftImage  leftLongText leftButtonLink middleImage  middleLongText middleButtonLink rightImage  rightLongText rightButtonLink; theme: contentTheme}
 
+      actionpopulaireBlock { label: Logo ActionPopulaire; theme: contentTheme}
+
       logoBlock imageWidth { label: Image Size; widget: select; options: 166=Small|258=Medium|350=Big; variant:imageWidth;}
       logoBlock { label: Logo Block; properties: image imageWidth=258; variant: imageWidth; theme: contentTheme}
 
@@ -184,6 +190,7 @@
       spacerBlock { label: Spacer Block;  theme: contentTheme}
 
       spacerBlock:preview,
+      actionpopulaireBlock:preview,
       logoBlock:preview { -ko-background-color: @[externalBackgroundColor] }
 
       preheaderBlock:preview,
@@ -295,7 +302,7 @@
     [data-ko-block=tripleArticleBlock] .links-color a:link,
     [data-ko-block=tripleArticleBlock] .links-color a:visited,
     [data-ko-block=tripleArticleBlock] .links-color a:hover {
-      color: #E93A55;
+      color: #571AFF;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -307,7 +314,7 @@
     [data-ko-block=doubleArticleBlock] .links-color a:link,
     [data-ko-block=doubleArticleBlock] .links-color a:visited,
     [data-ko-block=doubleArticleBlock] .links-color a:hover {
-      color: #E93A55;
+      color: #571AFF;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -319,7 +326,7 @@
     [data-ko-block=singleArticleBlock] .links-color a:link,
     [data-ko-block=singleArticleBlock] .links-color a:visited,
     [data-ko-block=singleArticleBlock] .links-color a:hover {
-      color: #E93A55;
+      color: #571AFF;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -331,7 +338,7 @@
     [data-ko-block=textBlock] .links-color a:link,
     [data-ko-block=textBlock] .links-color a:visited,
     [data-ko-block=textBlock] .links-color a:hover {
-      color: #E93A55;
+      color: #571AFF;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -343,7 +350,7 @@
     [data-ko-block=sideArticleBlock] .links-color a:link,
     [data-ko-block=sideArticleBlock] .links-color a:visited,
     [data-ko-block=sideArticleBlock] .links-color a:hover {
-      color: #E93A55;
+      color: #571AFF;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -379,7 +386,7 @@
     [data-ko-block=doubleImageBlock] a:link,
     [data-ko-block=doubleImageBlock] a:visited,
     [data-ko-block=doubleImageBlock] a:hover {
-      color: #E93A55;
+      color: #571AFF;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -387,7 +394,7 @@
     [data-ko-block=tripleImageBlock] a:link,
     [data-ko-block=tripleImageBlock] a:visited,
     [data-ko-block=tripleImageBlock] a:hover {
-      color: #E93A55;
+      color: #571AFF;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -395,7 +402,7 @@
     [data-ko-block=imageBlock] a:link,
     [data-ko-block=imageBlock] a:visited,
     [data-ko-block=imageBlock] a:hover {
-      color: #E93A55;
+      color: #571AFF;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -478,9 +485,9 @@
   <!-- /preheaderBlock -->
 
   <div data-ko-container="main" data-ko-wrap="false">
-      <!-- nspBlock -->
+      <!-- actionpopulaireBlock -->
       <table class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#ffffff"
-             style="background-color: #ffffff; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor" data-ko-block="logoBlock">
+             style="background-color: #ffffff; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor" data-ko-block="actionpopulaireBlock">
           <tr>
               <td class="vb-outer" align="center" valign="top" bgcolor="#ffffff"
                   style="background-color: #ffffff; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor">
@@ -492,10 +499,10 @@
                               <td valign="top" align="center">
 
                                   <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="112" style="width: 112px"><tr><td align="center" valign="top"><![endif]-->
-                                  <div style="display:inline-block; max-width:258px; -ko-max-width: @[imageWidth]px; vertical-align:top; width:100%;" class="mobile-full">
-                                      <img width="112"
-                                              style="width: 100%; max-width: 112px;"
-                                              src="img/logo.png" vspace="0" hspace="0" border="0" alt="Logo NSP" /></a>
+                                  <div style="display:inline-block; max-width:258px; vertical-align:top; width:100%;" class="mobile-full">
+                                      <img width="167"
+                                              style="width: 100%; max-width: 167px;"
+                                              src="img/logo_ap.png" vspace="0" hspace="0" border="0" alt="Logo Action populaire" /></a>
                                   </div>
                                   <!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
 
@@ -602,9 +609,9 @@
                         <td valign="top">
                           <table cellpadding="0" border="0" align="left" cellspacing="0" class="mobile-full" style="padding-top: 4px">
                             <tr>
-                              <td width="auto" valign="middle" bgcolor="#E93A55" align="center" height="26"
+                              <td width="auto" valign="middle" bgcolor="#571AFF" align="center" height="26"
                                 style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align:center; color: #ffffff; font-weight: normal;
-                                padding-left: 18px; padding-right: 18px; background-color: #E93A55; border-radius: 5px;
+                                padding-left: 18px; padding-right: 18px; background-color: #571AFF; border-radius: 5px;
                                 -ko-border-radius: @[buttonStyle.radius]px;
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color;">
@@ -695,9 +702,9 @@
               <td valign="top">
                 <table cellpadding="0" border="0" align="left" cellspacing="0" class="mobile-full">
                   <tr>
-                    <td width="auto" valign="middle" bgcolor="#E93A55" align="center" height="26"
+                    <td width="auto" valign="middle" bgcolor="#571AFF" align="center" height="26"
                       style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align:center; color: #ffffff; font-weight: normal;
-                      padding-left: 18px; padding-right: 18px; background-color: #E93A55; border-radius: 5px;
+                      padding-left: 18px; padding-right: 18px; background-color: #571AFF; border-radius: 5px;
                       -ko-border-radius: @[buttonStyle.radius]px;
                       -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                       -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
@@ -729,8 +736,8 @@
         <table width="570" border="0" cellpadding="0" cellspacing="9" class="vb-container halfpad" bgcolor="#ffffff"
           style="width: 100%; max-width: 570px; background-color: #ffffff; -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor;">
           <tr>
-            <td bgcolor="#ffffff" align="center"
-              style="background-color: #ffffff; font-size: 22px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: center;
+            <td bgcolor="#ffffff" align="left"
+              style="background-color: #ffffff; font-size: 22px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: left;
               -ko-attr-align: @bigTitleStyle.align; -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor;
               -ko-font-size: @[bigTitleStyle.size]px; -ko-font-family: @bigTitleStyle.face; -ko-color: @bigTitleStyle.color; -ko-text-align: @bigTitleStyle.align">
               <span data-ko-editable="text">Section Title</span>
@@ -818,9 +825,9 @@
                         <td valign="top">
                           <table cellpadding="0" border="0" align="left" cellspacing="0" class="mobile-full" style="padding-top: 4px">
                             <tr>
-                              <td width="auto" valign="middle" bgcolor="#E93A55" align="center" height="26"
+                              <td width="auto" valign="middle" bgcolor="#571AFF" align="center" height="26"
                                 style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align:center; color: #ffffff; font-weight: normal;
-                                padding-left: 18px; padding-right: 18px; background-color: #E93A55; border-radius: 5px;
+                                padding-left: 18px; padding-right: 18px; background-color: #571AFF; border-radius: 5px;
                                 -ko-border-radius: @[buttonStyle.radius]px;
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
@@ -867,9 +874,9 @@
                         <td valign="top">
                           <table cellpadding="0" border="0" align="left" cellspacing="0" class="mobile-full" style="padding-top: 4px">
                             <tr>
-                              <td width="auto" valign="middle" bgcolor="#E93A55" align="center" height="26"
+                              <td width="auto" valign="middle" bgcolor="#571AFF" align="center" height="26"
                                 style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align:center; color: #ffffff; font-weight: normal;
-                                padding-left: 18px; padding-right: 18px; background-color: #E93A55; border-radius: 5px;
+                                padding-left: 18px; padding-right: 18px; background-color: #571AFF; border-radius: 5px;
                                 -ko-border-radius: @[buttonStyle.radius]px;
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
@@ -916,9 +923,9 @@
                         <td valign="top">
                           <table cellpadding="0" border="0" align="left" cellspacing="0" class="mobile-full" style="padding-top: 4px">
                             <tr>
-                              <td width="auto" valign="middle" bgcolor="#E93A55" align="center" height="26"
+                              <td width="auto" valign="middle" bgcolor="#571AFF" align="center" height="26"
                                 style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align:center; color: #ffffff; font-weight: normal;
-                                padding-left: 18px; padding-right: 18px; background-color: #E93A55; border-radius: 5px;
+                                padding-left: 18px; padding-right: 18px; background-color: #571AFF; border-radius: 5px;
                                 -ko-border-radius: @[buttonStyle.radius]px;
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color;">
@@ -993,9 +1000,9 @@
                         <td valign="top">
                           <table cellpadding="0" border="0" align="left" cellspacing="0" class="mobile-full" style="padding-top: 4px;">
                             <tr>
-                              <td width="auto" valign="middle" bgcolor="#E93A55" align="center" height="26"
+                              <td width="auto" valign="middle" bgcolor="#571AFF" align="center" height="26"
                                 style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align:center; color: #ffffff; font-weight: normal;
-                                padding-left: 18px; padding-right: 18px; background-color: #E93A55; border-radius: 5px;
+                                padding-left: 18px; padding-right: 18px; background-color: #571AFF; border-radius: 5px;
                                 -ko-border-radius: @[buttonStyle.radius]px;
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
@@ -1042,9 +1049,9 @@
                         <td valign="top">
                           <table cellpadding="0" border="0" align="left" cellspacing="0" class="mobile-full" style="padding-top: 4px;">
                             <tr>
-                              <td width="auto" valign="middle" bgcolor="#E93A55" align="center" height="26"
+                              <td width="auto" valign="middle" bgcolor="#571AFF" align="center" height="26"
                                 style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align:center; color: #ffffff; font-weight: normal;
-                                padding-left: 18px; padding-right: 18px; background-color: #E93A55; border-radius: 5px;
+                                padding-left: 18px; padding-right: 18px; background-color: #571AFF; border-radius: 5px;
                                 -ko-border-radius: @[buttonStyle.radius]px;
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
@@ -1088,8 +1095,8 @@
               <table width="100%" cellspacing="0" cellpadding="0" border="0"
                 style="width:100%; -ko-width: @[hrStyle.hrWidth]%; -ko-attr-width: @[hrStyle.hrWidth]%">
                 <tr>
-                  <td width="100%" height="1" style="font-size:1px; line-height: 1px; width: 100%; background-color: #ffffff;
-                  -ko-background-color: @hrStyle.color; -ko-attr-height: @hrStyle.hrHeight; -ko-line-height: @[hrStyle.hrHeight]px">&nbsp;</td>
+                  <td width="100%" height="1" style="font-size:1px; line-height: 1px; width: 100%; background-color: #E0E0E0;
+                             -ko-background-color: @hrStyle.color; -ko-attr-height: @hrStyle.hrHeight; -ko-line-height: @[hrStyle.hrHeight]px">&nbsp;</td>
                 </tr>
               </table>
             </td>
@@ -1119,14 +1126,14 @@
 
               <table cellpadding="0" border="0" align="center" cellspacing="0" class="mobile-full">
                 <tr>
-                  <td width="auto" valign="middle" bgcolor="#E93A55" align="center" height="50"
-                    style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
-                    padding-left: 14px; padding-right: 14px; background-color: #E93A55; border-radius: 5px;
-                    -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
-                     -ko-border-radius: @[bigButtonStyle.radius]px;
-                    -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
-                    <a data-ko-link="link.url" data-ko-editable="link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @bigButtonStyle.color;">BUTTON</a>
+                  <td width="auto" valign="middle" bgcolor="#F4ED0F" align="center" height="50"
+                      style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #000A2C; font-weight: normal;
+                             padding-left: 14px; padding-right: 14px; background-color: #F4ED0F; border-radius: 5px;
+                             -ko-attr-bgcolor: @bigButtonStyle.buttonColor; -ko-background-color: @bigButtonStyle.buttonColor;
+                             -ko-border-radius: @[bigButtonStyle.radius]px;
+                             -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
+                    <a data-ko-link="link.url" data-ko-editable="link.text" href="" style="text-decoration: none; color: #000A2C; font-weight: normal;
+                                     -ko-color: @bigButtonStyle.color;">Texte du bouton</a>
                   </td>
                 </tr>
               </table>
@@ -1520,13 +1527,15 @@
           </tr>
         </table>
         </div>
-<!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+        <!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
       </td>
     </tr>
   </table>
   <!-- /socialBlock -->
 
   </div>
+
+<div data-ko-display="footerVisible" data-ko-wrap="false">
 
   <!-- footerBlock -->
   <table width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#ffffff"
@@ -1541,11 +1550,11 @@
           <tr>
               <td align="left" style="text-align: left; font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #919191;
                     -ko-font-size: @[longTextStyle.size]px; -ko-color: @longTextStyle.color; -ko-font-family: @longTextStyle.face"
-                  class="long-text links-color" data-ko-editable="longText">
-                <p>
+                  class="long-text links-color">
+                <p data-ko-display="preferencesVisible">
                     Vous souhaitez recevoir moins de mails de notre part : <a href="https://noussommespour.fr/preferences/?agir_id={{ user_pk }}">modifier ses préférences ou se désinscrire</a>.
                 </p>
-                <p>Mai envoyé à {{ email }}</p>
+                <p>Ce mail a été adressé à {{ email }}</p>
               </td>
           </tr>
         </table>
@@ -1556,6 +1565,7 @@
   </table>
   <!-- /footerBlock -->
 
+</div>
   </center>
 </body>
 </html>
